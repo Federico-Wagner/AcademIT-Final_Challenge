@@ -10,8 +10,6 @@ import com.examen.federicowagner.repositories.SaleRepository;
 import com.examen.federicowagner.repositories.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class SaleService implements ISaleService {
             int productCount = 0;
 
             for (int i=0; i<newSaleDTO.getCart().size(); i++) {
-                //Grab dat from DTO
+                //Grab data from DTO
                 Long Product_id = newSaleDTO.getCart().get(i).getProduct_id();
                 Long amount = newSaleDTO.getCart().get(i).getAmount();
                 productCount += amount;

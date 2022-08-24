@@ -1,8 +1,6 @@
 package com.examen.federicowagner.controllers;
 
-
 import com.examen.federicowagner.dto.NewSaleDTO;
-import com.examen.federicowagner.entities.Vendor;
 import com.examen.federicowagner.services.ISaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

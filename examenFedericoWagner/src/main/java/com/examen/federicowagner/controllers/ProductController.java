@@ -1,12 +1,10 @@
 package com.examen.federicowagner.controllers;
 
-
 import com.examen.federicowagner.dto.NewProductDTO;
 import com.examen.federicowagner.entities.Product;
 import com.examen.federicowagner.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
