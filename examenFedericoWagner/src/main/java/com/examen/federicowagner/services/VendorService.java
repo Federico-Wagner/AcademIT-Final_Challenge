@@ -4,6 +4,7 @@ import com.examen.federicowagner.repositories.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VendorService implements IVendorService{
@@ -20,5 +21,16 @@ public class VendorService implements IVendorService{
     public Vendor saveNewVendor(Vendor vendor) {
         return this.vendorRepository.save(vendor);
     }
+
+    @Override
+    public Optional<Vendor> findById(Long id) {
+        return this.vendorRepository.findById(id);
+    }
+
+    @Override
+    public Vendor save(Vendor vendor) {
+        return this.vendorRepository.save(vendor);
+    }
+
 
 }

@@ -9,6 +9,8 @@ public interface IProductService {
 
     public List<Product> getAllProducts();
     public Product saveNewProduct(Product product);
+
+    public Optional<Product> findById(Long id);
     public List<Product> findAllByName(String name);
     public List<Product> findAllByCategory(String category);
 

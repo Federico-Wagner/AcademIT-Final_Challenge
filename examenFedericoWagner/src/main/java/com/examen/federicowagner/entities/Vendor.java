@@ -1,5 +1,7 @@
 package com.examen.federicowagner.entities;
 import com.examen.federicowagner.dto.NewVendorDTO;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
@@ -24,7 +26,6 @@ public class Vendor {
 
     @OneToMany(mappedBy = "vendor")
     private List<Sale> sales;
-
 
     public Vendor() {
     }

@@ -22,8 +22,6 @@ public class Product implements Serializable {
     private String category;
 
     @OneToMany(mappedBy = "sale")
-//    @JsonIgnoreProperties("saleProducts")
-//    @JsonIncludeProperties({"name", "price", "category"})
     private List<SaleProduct> saleProducts;
 
     public Product() {}

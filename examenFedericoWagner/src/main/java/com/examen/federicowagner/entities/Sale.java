@@ -1,4 +1,6 @@
 package com.examen.federicowagner.entities;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
