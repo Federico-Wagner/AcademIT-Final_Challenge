@@ -1,5 +1,7 @@
 package com.examen.federicowagner.entities;
 import com.examen.federicowagner.dto.NewProductDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
@@ -22,6 +24,7 @@ public class Product implements Serializable {
     private String category;
 
     @OneToMany(mappedBy = "sale")
+    @JsonIgnore //Mi santo grial
     private List<SaleProduct> saleProducts;
 
     public Product() {}

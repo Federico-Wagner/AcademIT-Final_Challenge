@@ -1,0 +1,14 @@
+<main>
+  <h3 class="title">NEW PRODUCT creator</h3>
+  <form id="newProduct" [formGroup]="newProductForm" (ngSubmit)="onSubmit()" >
+
+    <input id="name" type="text" formControlName="name" placeholder="name" maxlength="60" [required]=true>
+    <input id="price" type="number" formControlName="price" placeholder="Price" maxlength="60" [required]=true>
+    <input id="category" type="text" formControlName="category" placeholder="Category" maxlength="60" [required]=true>
+
+
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="(!newProductForm.valid)">Submit</button>
+    <p>{{msg}}</p>
+  </form>
+</main>

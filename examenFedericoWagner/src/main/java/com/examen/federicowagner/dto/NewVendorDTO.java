@@ -5,7 +5,7 @@ import java.io.Serializable;
 @Data
 public class NewVendorDTO implements Serializable {
     private String name;
-    private double salary;
+    private Double salary;
 
     @Override
     public String toString() {

@@ -1,0 +1,14 @@
+<main>
+  <h3 class="title">Welcome NEW VENDOR</h3>
+  <form id="newVendor" [formGroup]="newVendorForm" (ngSubmit)="onSubmit()" >
+    <div class="userName">
+      <input id="name" type="text" formControlName="name" placeholder="name" maxlength="60" >
+    </div>
+    <div class="userSalary">
+      <input id="salary" type="number" formControlName="salary" placeholder="Salary $" >
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="(!newVendorForm.valid)">Submit</button>
+    <p>{{msg}}</p>
+  </form>
+</main>

@@ -15,8 +15,8 @@ public class CommissionManager {
 
    public Double calculateCommission(Double finalPrice, int amount ){
         //COMMISSION CALCULATION
-       double commission;
-        if (amount == 1){
+       Double commission;
+        if (amount <= 2){
             commission = finalPrice * Double.parseDouble(TWO_PRODUCT_COMMISSION);
         }else{
             commission = finalPrice * Double.parseDouble(TREE_PLUS_PRODUCT_COMMISSION);

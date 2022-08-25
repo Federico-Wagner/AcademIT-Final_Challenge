@@ -1,5 +1,6 @@
 package com.examen.federicowagner.entities;
 import com.examen.federicowagner.dto.NewVendorDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,12 @@ public class Vendor {
     @Column(name = "name")
     private String name;
     @Column(name = "salary")
-    private double salary;
+    private Double salary;
     @Column(name = "commissions")
-    private double commissions;
+    private Double commissions;
 
     @OneToMany(mappedBy = "vendor")
+    @JsonIgnore //Mi santo grial
     private List<Sale> sales;
 
     public Vendor() {
@@ -32,6 +34,6 @@ public class Vendor {
     public Vendor(NewVendorDTO newVendorDTO) {
         this.name = newVendorDTO.getName();
         this.salary = newVendorDTO.getSalary();
-        this.commissions = 0;
+        this.commissions = 0.0;
     }
 }

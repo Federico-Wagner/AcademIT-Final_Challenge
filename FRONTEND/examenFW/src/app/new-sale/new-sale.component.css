@@ -1,0 +1,15 @@
+*{
+  margin: 5px;
+  /*padding: 0;*/
+}
+
+ul{
+  width: 200px;
+}
+.list{
+  width: 40%;
+}
+
+.wrapper{
+  display: flex;
+}

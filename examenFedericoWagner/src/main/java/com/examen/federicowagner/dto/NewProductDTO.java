@@ -5,6 +5,6 @@ import java.io.Serializable;
 @Data
 public class NewProductDTO implements Serializable {
     private String name;
-    private double price;
+    private Double price;
     private String category;
 }

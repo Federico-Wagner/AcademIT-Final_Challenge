@@ -1,0 +1,58 @@
+
+<h3 class="title">NEW SALE</h3>
+<!--<form id="newVendor" [formGroup]="newVendorForm" (ngSubmit)="onSubmit()" >-->
+<form #newSaleForm="ngForm" (ngSubmit)="onSubmit(newSaleForm)" novalidate>
+  <div class="wrapper">
+  <div class="list">
+
+    <ul *ngFor=" let vendor of vendorList">
+      <h3>{{vendor.name}}</h3>
+      <p>Salary: $ {{vendor.salary}}</p>
+      <p>Commissions: $ {{vendor.commissions}}</p>
+<!--      <input id="{{vendor.id}}" type="number" formControlName="name" placeholder="Amount" >-->
+<!--      <input type="radio" id="vendor{{vendor.id}}" name="vendor{{vendor.id}}" ngModel>-->
+      <input type="radio" id="{{vendor.id}}" name="vendorId" value="{{vendor.id}}">
+      <hr>
+    </ul>
+
+  </div>
+  <div>
+    <ul *ngFor=" let product of productList">
+      <h3>{{product.name}}</h3>
+      <p>$ {{product.price}}</p>
+      <p>Category: {{product.category}}</p>
+      <input id="vendor{{product.id}}" name="vendor{{product.id}}" placeholder="Amount" ngModel>
+      <hr>
+    </ul>
+  </div>
+  </div>
+  <button type="submit" [disabled]="(!newSaleForm.valid)">Submit</button>
+</form>
+
+
+<!--<main>-->
+<!--  <h3 class="title">Login to your account</h3>-->
+
+<!--  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>-->
+<!--    <div class="userDataRow email">-->
+<!--      <label for="email"><i class="fa-solid fa-envelope"></i></label>-->
+<!--      <input id="email" name="email" placeholder="Email" [required]="true"  [email]="true" #email ngModel>-->
+<!--    </div>-->
+<!--    <p *ngIf=" loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)" class="passwordError errores">Invalid email provided</p>-->
+<!--    <div class="userDataRow password">-->
+<!--      <label for="password"><i class="fa-solid fa-key"></i></label>-->
+<!--      <input id="password" type="password" name="password" placeholder="Password" [maxlength]="20" [minlength]="6" [required]="true" #password ngModel>-->
+<!--    </div>-->
+<!--    <div *ngIf="password.validationMessage && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)" class="passwordError errores">-->
+<!--      <p>Password must satisfy:</p>-->
+<!--      <ul>-->
+<!--        <li>Minimum length: 6 characters</li>-->
+<!--        <li>Maximum length: 20 characters</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    <button class="button" type="submit" [disabled]="loginForm.form.invalid" >Login</button>-->
+<!--  </form>-->
+<!--  <p>{{ msg }}</p>-->
+
+<!--  <p class="redirect">Don't have an account yet? <a routerLink="/register"> Register</a></p>-->
+<!--</main>-->
