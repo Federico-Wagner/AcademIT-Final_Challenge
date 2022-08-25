@@ -5,10 +5,6 @@ import com.examen.federicowagner.entities.Sale;
 import com.examen.federicowagner.entities.Vendor;
 
 public interface ISaleService {
-
-//    public Vendor newSale(NewSaleDTO newSaleDTO) throws Exception;
-
-    public Sale save(Sale sale);
-
+    Sale save(Sale sale);
 
 }

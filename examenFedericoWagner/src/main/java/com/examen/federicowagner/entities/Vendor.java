@@ -1,12 +1,9 @@
 package com.examen.federicowagner.entities;
 import com.examen.federicowagner.dto.NewVendorDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 

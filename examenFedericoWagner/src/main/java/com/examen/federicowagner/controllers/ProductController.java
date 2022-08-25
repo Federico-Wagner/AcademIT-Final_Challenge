@@ -28,13 +28,12 @@ public class ProductController {
         LOGGER.log(Level.INFO, "NEW PRODUCT REGISTERED: " + newProduct.getName() + " : $" + newProduct.getPrice());
         return newProduct;
     }
-    //localhost:9080/api/v1/product/name?search=Tornillo allen M8x20
+
     @GetMapping("/name")
     public List<Product> productByName(@RequestParam("search") String search){
         return this.iProductService.findAllByName(search);
     }
 
-    //localhost:9080/api/v1/product/category?search=Tornillos
     @GetMapping("/category")
     public List<Product> productByCategory(@RequestParam("search") String search){
         return this.iProductService.findAllByCategory(search);

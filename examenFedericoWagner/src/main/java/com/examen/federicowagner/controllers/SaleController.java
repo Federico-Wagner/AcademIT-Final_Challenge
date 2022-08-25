@@ -28,19 +28,14 @@ import java.util.logging.Logger;
 @RequestMapping("/api/v1/sale")
 public class SaleController {
     private final Logger LOGGER = Logger.getLogger( SaleController.class.getName());
-
     @Autowired
     private CommissionManager commissionManager;
-
     @Autowired
     private ISaleService iSaleService;
-
     @Autowired
     private IVendorService iVendorService;
-
     @Autowired
     private IProductService iProductService;
-
 
     @PostMapping
     public ResponseEntity<?> saveNewSale(@RequestBody NewSaleDTO newSaleDTO) throws Exception {
@@ -82,8 +77,7 @@ public class SaleController {
 
             //COMMISSION CALCULATION
             Double saleCommission = commissionManager.calculateCommission(totalPrice, productCount);
-//            Double vendorCommissions = vendor.getCommissions();
-            Double vendorCommissions = vendor.getCommissions() == null ? 0.0 : vendor.getCommissions();
+            Double vendorCommissions = vendor.getCommissions() == null ? 0.0 : vendor.getCommissions(); //HOT FIX
             vendor.setCommissions(vendorCommissions + saleCommission);
 
             //SALE DATA INTEGRATION
@@ -96,14 +90,16 @@ public class SaleController {
             try {
                 this.iSaleService.save(sale);     //(nested object will create rows in SaleProduct table)
                 LOGGER.log(Level.INFO, "NEW SALE: " + vendor.getName() + " : $" + totalPrice);
-            } catch (NoSuchElementException e) {
+            } catch (Exception e) {
+                LOGGER.log(Level.WARNING, "FAILED NEW SALE: " + vendor.getName() + " : $" + totalPrice);
                 throw new Exception("Couldn't save new Sale on DB", e);
             }
             //VENDOR TOTAL COMMISSION UPDATE
             try {
                 this.iVendorService.save(vendor);
                 LOGGER.log(Level.INFO, "COMMISSION ADDITION TO: " + vendor.getName() + " : $" + saleCommission);
-            } catch (NoSuchElementException e) {
+            } catch (Exception e) {
+                LOGGER.log(Level.WARNING, " FAILED COMMISSION ADDITION TO: " + vendor.getName() + " : $" + saleCommission);
                 throw new Exception("Couldn't update Vendor commission"+ vendor.getName()+ " "+ saleCommission, e);
             }
             return new ResponseEntity<>(sale, HttpStatus.OK);

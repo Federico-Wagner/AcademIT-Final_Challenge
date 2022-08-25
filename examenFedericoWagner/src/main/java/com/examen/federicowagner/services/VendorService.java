@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Service
 public class VendorService implements IVendorService{
-
     @Autowired
     private VendorRepository vendorRepository;
 
@@ -31,6 +30,4 @@ public class VendorService implements IVendorService{
     public Vendor save(Vendor vendor) {
         return this.vendorRepository.save(vendor);
     }
-
-
 }
