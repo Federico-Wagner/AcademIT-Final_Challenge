@@ -18,7 +18,6 @@ public class ProductService implements IProductService{
 
     @Override
     public Product saveNewProduct(Product product) {
-        System.out.println(product);
         return this.productRepository.save(product);
     }
 

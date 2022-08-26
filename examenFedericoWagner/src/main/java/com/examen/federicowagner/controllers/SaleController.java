@@ -2,13 +2,11 @@ package com.examen.federicowagner.controllers;
 
 import com.examen.federicowagner.commissions.CommissionManager;
 import com.examen.federicowagner.dto.NewSaleDTO;
+import com.examen.federicowagner.dto.SalesDatesDTO;
 import com.examen.federicowagner.entities.Product;
 import com.examen.federicowagner.entities.Sale;
 import com.examen.federicowagner.entities.SaleProduct;
 import com.examen.federicowagner.entities.Vendor;
-import com.examen.federicowagner.repositories.ProductRepository;
-import com.examen.federicowagner.repositories.SaleRepository;
-import com.examen.federicowagner.repositories.VendorRepository;
 import com.examen.federicowagner.services.IProductService;
 import com.examen.federicowagner.services.ISaleService;
 import com.examen.federicowagner.services.IVendorService;
@@ -17,7 +15,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
@@ -36,7 +37,36 @@ public class SaleController {
     private IVendorService iVendorService;
     @Autowired
     private IProductService iProductService;
+    @GetMapping
+    public ResponseEntity<?> saleQuery() {
 
+        List<Sale> vendorSales = this.iSaleService.findByVendorId(1L);
+
+        return new ResponseEntity<>(vendorSales,HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> lastMonthVendorSales(@PathVariable Long id) {
+        System.out.println(id);
+
+        List<Sale> lastMonthVendorSales = this.iSaleService.lastMonthVendorSales(id);
+
+        return new ResponseEntity<>(lastMonthVendorSales,HttpStatus.OK);
+    }
+    @GetMapping("/{id}/dates")
+    public ResponseEntity<?> betweenDatesVendorSales(@PathVariable Long id, @RequestBody SalesDatesDTO salesDatesDTO) {
+        System.out.println(salesDatesDTO);
+        System.out.println(id);
+
+        LocalDate dateFrom = LocalDate.parse(salesDatesDTO.getDateFrom().toString());
+        LocalDate dateUpTo = LocalDate.parse(salesDatesDTO.getDateUpTo().toString());
+
+        System.out.println("from: " + dateFrom );
+        System.out.println("upTo: " + dateUpTo);
+
+        List<Sale> lastMonthVendorSales = this.iSaleService.betweenDatesVendorSales(id, dateFrom, dateUpTo);
+
+        return new ResponseEntity<>(lastMonthVendorSales,HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<?> saveNewSale(@RequestBody NewSaleDTO newSaleDTO) throws Exception {
             //Find Vendor by Id
@@ -85,6 +115,7 @@ public class SaleController {
             sale.setVendor(vendor);
             sale.setTotalPrice(totalPrice);
             sale.setSaleCommission(saleCommission);
+            sale.setDate(LocalDate.now());
 
             //SALE SAVE
             try {

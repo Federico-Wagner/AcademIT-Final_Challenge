@@ -24,7 +24,6 @@ public class VendorController {
 
     @PostMapping
     public Vendor saveNewProduct(@RequestBody NewVendorDTO newVendorDTO){
-        System.out.println(newVendorDTO);
         Vendor newVendor = this.iVendorService.saveNewVendor(new Vendor(newVendorDTO));
         LOGGER.log(Level.INFO, "NEW VENDOR REGISTERED: " + newVendor.getName() + " : $" + newVendor.getSalary());
         return newVendor;

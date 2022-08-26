@@ -30,19 +30,21 @@ export class NewVendorComponent implements OnInit {
     this.vendorDTO.salary = this.newVendorForm.value.salary
     this.http.post('http://localhost:9080/api/v1/vendor', this.vendorDTO)
       .subscribe(res => {
-        let response = res as Response
-        if (response.id != null){
-          this.router.navigate(["/"])
-        }else {
-          this.msg = "Could not Create new Vendor"
-        }
+        let response  = res as Response
+
+        alert("Producto Creado:" +
+          "\nid: " +response.id +
+          "\nname: " + response.name +
+          "\nslary: " + response.salary +
+          "\ncommissions: " +response.commissions
+        )
       })
   }
 }
 
 class Response{
-  "commissions": number
   "id" : number
   "name" : string
-  "slary" : number
+  "salary" : number
+  "commissions" : string
 }

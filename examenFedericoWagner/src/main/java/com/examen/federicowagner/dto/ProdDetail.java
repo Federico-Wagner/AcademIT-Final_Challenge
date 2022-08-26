@@ -7,5 +7,4 @@ import lombok.Data;
 public class ProdDetail {
     private Long product_id;
     private Long amount;
-
 }

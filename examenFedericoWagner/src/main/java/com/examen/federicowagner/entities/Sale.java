@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,11 +24,14 @@ public class Sale {
     @Column(name = "sale_commission")
     private Double saleCommission;
 
+    @Column(name = "date")
+    private LocalDate date;
+
     @ManyToOne
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product")
     @JsonIgnore //Mi santo grial
     private List<SaleProduct> saleProducts;
 

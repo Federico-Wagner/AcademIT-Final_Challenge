@@ -36,6 +36,14 @@ export class NewProductComponent implements OnInit {
     this.http.post('http://localhost:9080/api/v1/product', this.productDTO)
       .subscribe(res => {
         console.log(res)
+        let response  = res as Response
+
+        alert("Producto Creado:" +
+          "\nid: " +response.id +
+          "\nname: " + response.name +
+          "\nprice: " + response.price +
+          "\ncategory: " + response.category
+        )
         // let response = res as Response
         // if (response.id != null){
         //   this.router.navigate(["/"])
@@ -47,8 +55,12 @@ export class NewProductComponent implements OnInit {
 }
 
 class Response{
-  "commissions": number
-  "id" : number
-  "name" : string
-  "slary" : number
+  // @ts-ignore
+  category: string
+  // @ts-ignore
+  id: number
+  // @ts-ignore
+  name: string
+  // @ts-ignore
+  price: number
 }

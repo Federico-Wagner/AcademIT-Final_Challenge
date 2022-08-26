@@ -5,10 +5,8 @@ import java.util.Optional;
 
 
 public interface IProductService {
-
     List<Product> getAllProducts();
     Product saveNewProduct(Product product);
-
     Optional<Product> findById(Long id);
     List<Product> findAllByName(String name);
     List<Product> findAllByCategory(String category);

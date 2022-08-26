@@ -11,5 +11,3 @@ export class VendorDTO{
 //   "salary": 90000.0,
 //   "commissions": 4.7
 // }
-
-
